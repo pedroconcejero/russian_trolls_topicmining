@@ -1,7 +1,7 @@
 
 
 #install.packages("quanteda") 
-install.packages("topicmodels")
+#install.packages("topicmodels")
 
 library(quanteda)
 library(topicmodels)
@@ -28,8 +28,7 @@ kwic(trolls, pattern = "terror")
 
 
 # make a dfm, removing stopwords and applying stemming
-myStemMat <- dfm(trolls, remove = stopwords("english"), stem = TRUE, remove_punct = TRUE)
-print(myStemMat[, 1:10])
+myStemMat <- dfm(trolls, remove = stopwords("english"), stem = FALSE, remove_punct = TRUE)
 
 topfeatures(myStemMat, 20)  # 20 top words
 topfeatures(myStemMat, 100)  # 100 top words
@@ -48,15 +47,15 @@ quant_dfm <- dfm(trolls,
                  remove_punct = TRUE, 
                  remove_numbers = TRUE, 
                  remove = stopwords("english"))
-quant_dfm <- dfm_trim(quant_dfm, min_termfreq = 4, max_docfreq = 10)
+quant_dfm <- dfm_trim(quant_dfm, min_termfreq = 100)
 quant_dfm
 
 ## Document-feature matrix of: 14 documents, 1,263 features (64.5% sparse).
 
-set.seed(100)
-if (require(topicmodels)) {
-  my_lda_fit20 <- LDA(convert(quant_dfm, to = "topicmodels"), k = 20)
-  get_terms(my_lda_fit20, 5)
-}
+# set.seed(100)
+# if (require(topicmodels)) {
+#   my_lda_fit20 <- LDA(convert(quant_dfm, to = "topicmodels"), k = 20)
+#   get_terms(my_lda_fit20, 5)
+# }
 
 save.image(file = "wkspace.rda")

@@ -226,6 +226,7 @@ head(trollstot$content, n = 100)
 trollstot$content <- str_replace_all(trollstot$content, "\"\"", "" )
 trollstot$content <- str_replace_all(trollstot$content, pattern = "https?://([^/\\s]++)\\S*+", "" )
 trollstot$content <- str_replace_all(trollstot$content, pattern = "&amp;", "" )
+trollstot$content <- str_replace_all(trollstot$content, pattern = "@^", "" )
 
 # Guardamos objeto R con todos
 
