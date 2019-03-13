@@ -144,7 +144,7 @@ png(file="mygraphic_hi_res_def_def.png",
 		res = 300,
 		bg = "black")
 
-par(mfrow=c(6,5))
+par(mfrow=c(3,4))
 
 for (k in 1:length(kk[,1])) {
 	
@@ -163,7 +163,7 @@ for (k in 1:length(kk[,1])) {
 	#plot.new()
 	
 	pal2 <- brewer.pal(11,"Spectral")
-	wordcloud(d$word,d$freq^3, scale=c(2.2,0.001),
+	wordcloud(d$word,d$freq, scale=c(2.2,0.001),
 						max.words=70, 
 						random.order=FALSE, 
 						rot.per= 0, 
@@ -186,4 +186,4 @@ dev.off()
 
 
 
-save.image(out.wkspace)
+save.image(file = "wkspace.rda")
