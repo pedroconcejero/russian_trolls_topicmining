@@ -16,13 +16,13 @@ load("todos_los_trolls.rda")
 
 table(trollstot$account_category, trollstot$retweet)
 
-righttrolls <- trollstot[trollstot$account_category == "RightTroll" 
+lefttrolls <- trollstot[trollstot$account_category == "LeftTroll" 
                          & trollstot$retweet == "0"
                          & trollstot$language == "English",]
-dim(righttrolls)
+dim(lefttrolls)
 
 # Creamos un corpus con el contenido de los tuits
-trolls <- corpus(righttrolls$content)
+trolls <- corpus(lefttrolls$content)
 
 dim(trollstot)
 table(trollstot$language)
@@ -64,7 +64,7 @@ textplot_wordcloud(myStemMat,
 
 time1 <- Sys.time()
 
-quant_dfm <- dfm_trim(myStemMat, min_termfreq = 100)
+quant_dfm <- dfm_trim(myStemMat, min_termfreq = 10)
 
 set.seed(100)
 if (require(topicmodels)) {
@@ -90,7 +90,7 @@ head(kk)
 # 6 colums * 600 = 3000 width
 # 5 rows * 600 = 3600 height
 
-png(file="RIGHTTROLLS_hi_res_def_def.png",
+png(file="LEFTTROLLS_hi_res_def_def.png",
     width=3600,
     height=3000,
     res = 300,
@@ -131,4 +131,4 @@ for (k in 1:length(kk[,1])) {
 dev.off()
 
 
-save.image(file = "wkspace_righttrolls.rda")
+save.image(file = "wkspace_LEFTtrolls.rda")
