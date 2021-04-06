@@ -9,8 +9,9 @@
 # https://github.com/fivethirtyeight/russian-troll-tweets/archive/master.zip
 
 library(data.table)
+library(stringr)
 
-setwd("D:/trolls/russian-troll-tweets-master")
+setwd("/home/pedro/Escritorio/UTAD_2021_Q2/BUSQUEDA Y ANALISIS INFORMACION/russian_trolls_topicmining/russian-troll-tweets-master")
 
 
 # Lectura y carga de cada una de las 13 piezas por separado
